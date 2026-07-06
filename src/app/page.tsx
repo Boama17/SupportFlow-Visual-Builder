@@ -44,7 +44,12 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-slate-950 overflow-auto">
       <Canvas
-      />
+            data={data}
+            isEditing={true}
+            activeNode={selectedNode}
+            onNodeEdit={handleNodeEdit}
+            onNodeSelect={setSelectedNode}
+          />
     </main>
   );
 }
