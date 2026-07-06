@@ -1,0 +1,76 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "text": "Welcome to Support. What is your issue?",
+      "x": 300,
+      "y": 30,
+      "children": ["q1", "q2"],
+      "options": ["Internet is down", "Billing Question"]
+    },
+    {
+      "id": "q1",
+      "type": "question",
+      "text": "Have you tried restarting your router?",
+      "x": 50,
+      "y": 160,
+      "children": ["end1", "end2"],
+      "options": ["Yes, already tried", "No, let me try that"]
+    },
+    {
+      "id": "q2",
+      "type": "question",
+      "text": "What is your billing issue?",
+      "x": 500,
+      "y": 160,
+      "children": ["end3", "end4"],
+      "options": ["I was charged incorrectly", "I need an invoice"]
+    },
+    {
+      "id": "end1",
+      "type": "response",
+      "text": "Router restart help",
+      "x": 10,
+      "y": 310,
+      "children": ["complete"],
+      "options": []
+    },
+    {
+      "id": "end2",
+      "type": "response",
+      "text": "Account type selection",
+      "x": 180,
+      "y": 310,
+      "children": ["complete"],
+      "options": []
+    },
+    {
+      "id": "end3",
+      "type": "response",
+      "text": "Billing correction",
+      "x": 370,
+      "y": 310,
+      "children": ["complete"],
+      "options": []
+    },
+    {
+      "id": "end4",
+      "type": "response",
+      "text": "Invoice request",
+      "x": 540,
+      "y": 310,
+      "children": ["complete"],
+      "options": []
+    },
+    {
+      "id": "complete",
+      "type": "end",
+      "text": "Issue Resolved",
+      "x": 300,
+      "y": 480,
+      "children": [],
+      "options": []
+    }
+  ]
+}
