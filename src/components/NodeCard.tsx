@@ -13,18 +13,18 @@ interface NodeCardProps {
   onEditingChange?: (text: string) => void;
 }
 
-const getNodeColor = (type: NodeType) => {
+const getNodeColors = (type: NodeType) => {
   switch (type) {
     case 'start':
-      return '#3b82f6';
+      return ['#fb7507', '#dd8136'];
     case 'question':
-      return '#06b6d4';
+      return ['#dd8136', '#e7a46e'];
     case 'response':
-      return '#06b6d4';
+      return ['#e7a46e', '#ffe3cc'];
     case 'end':
-      return '#10b981';
+      return ['#fb7507', '#e7a46e'];
     default:
-      return '#3b82f6';
+      return ['#fb7507', '#dd8136'];
   }
 };
 
@@ -60,6 +60,7 @@ const getNodeIcon = (type: NodeType) => {
 
 const getNodeSize = (type: NodeType) => {
   return type === 'response' ? { w: 150, h: 100 } : { w: 250, h: 120 };
+
 };
 
 export default function NodeCard({
@@ -72,15 +73,16 @@ export default function NodeCard({
   editingText,
   onEditingChange,
 }: NodeCardProps) {
-  const color = getNodeColor(node.type);
+  const [startColor, endColor] = getNodeColors(node.type);
   const icon = getNodeIcon(node.type);
   const size = getNodeSize(node.type);
   const isCurrentlyEditing = editingId === node.id && isEditing;
+  const textColor = node.type === 'response' ? '#23160d' : '#fff7ef';
 
   return (
     <div
       onClick={() => onSelectForPreview?.(node.id)}
-      className="absolute cursor-pointer ms-[12rem] mt-[2rem] transition-transform hover:scale-105"
+      className="absolute cursor-pointer ms-48 mt-8 transition-transform duration-200 hover:scale-105"
       style={{
         left: `${node.x}px`,
         top: `${node.y}px`,
@@ -90,16 +92,17 @@ export default function NodeCard({
       }}
     >
       <div
-        className="relative w-full h-full rounded-xl shadow-lg flex flex-col items-center justify-center p-2 text-white font-medium transition-all duration-200 border-2"
+        className="relative w-full h-full flex flex-col items-center justify-center p-2 font-medium transition-all duration-200 border-2"
         style={{
-          backgroundColor: color,
-          borderColor: isActive ? '#ffffff' : color,
+          backgroundImage: `linear-gradient(135deg, ${startColor} 0%, ${endColor} 100%)`,
+          borderColor: isActive ? '#fff7ef' : startColor,
           borderWidth: isActive ? '3px' : '2px',
-          boxShadow: isActive 
-            ? `0 0 24px ${color}90, 0 10px 28px rgba(0, 0, 0, 0.7)` 
-            : `0 8px 20px ${color}40, 0 3px 8px rgba(0, 0, 0, 0.25)`,
+          boxShadow: isActive
+            ? `0 0 24px ${startColor}80, 0 12px 28px rgba(0, 0, 0, 0.55)`
+            : `0 10px 22px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.18)`,
           opacity: 0.98,
-          borderRadius: '16px',
+          borderRadius: '18px',
+          color: textColor,
         }}
       >
         <div className="text-sm mb-2 flex items-center gap-1">
@@ -119,11 +122,11 @@ export default function NodeCard({
                 onEdit(node.id, editingText || '');
               }
             }}
-            className="w-full h-full p-1.5 bg-black/30 text-white text-xs text-center rounded border-none resize-none focus:outline-none focus:ring-2 focus:ring-white/50"
-            style={{ color: 'white', fontFamily: 'inherit' }}
+            className="w-full h-full p-1.5 bg-black/20 text-xs text-center rounded border-none resize-none focus:outline-none focus:ring-2 focus:ring-white/50"
+            style={{ color: textColor, fontFamily: 'inherit' }}
           />
         ) : (
-          <p className="text-center text-xs leading-snug line-clamp-2 break-words">{node.text}</p>
+          <p className="text-center text-xs leading-snug whitespace-pre-line wrap-break-word">{node.text}</p>
         )}
         {node.children && node.children.length > 0 && !isCurrentlyEditing && (
           <p className="text-xs opacity-70 mt-1 text-center">{node.children.length} {node.children.length === 1 ? 'path' : 'paths'}</p>

@@ -95,12 +95,12 @@ export default function ChatPreview({ data, onClose }: ChatPreviewProps) {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-slate-800/95 backdrop-blur-sm rounded-2xl w-full max-w-md shadow-2xl border border-slate-700/50 flex flex-col" style={{ height: '600px' }}>
-        <div className="flex justify-between items-center p-5 border-b border-slate-700/30 bg-gradient-to-r from-slate-800/50 to-slate-800/30">
-          <h2 className="text-lg font-semibold text-white">Support Chat</h2>
+      <div className="bg-[#23160d]/95 backdrop-blur-sm rounded-[24px] w-full max-w-md shadow-[16px_16px_40px_rgba(0,0,0,0.4)] border border-[#ffe3cc]/15 flex flex-col" style={{ height: '600px' }}>
+        <div className="flex justify-between items-center p-5 border-b border-[#ffe3cc]/15 bg-linear-to-r from-[#2d1d10]/90 to-[#23160d]/80">
+          <h2 className="text-lg font-semibold text-[#fff7ef]">Support Chat</h2>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white transition-colors text-2xl leading-none"
+            className="text-[#e7a46e] hover:text-[#ffe3cc] transition-colors text-2xl leading-none"
           >
             ×
           </button>
@@ -110,10 +110,10 @@ export default function ChatPreview({ data, onClose }: ChatPreviewProps) {
           {messages.map((msg, idx) => (
             <div key={idx} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div
-                className={`max-w-xs px-4 py-2.5 rounded-xl text-sm leading-relaxed ${
+                className={`max-w-xs px-4 py-2.5 rounded-[18px] text-sm leading-relaxed ${
                   msg.type === 'user'
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-br-sm shadow-lg'
-                    : 'bg-slate-700/80 text-slate-50 rounded-bl-sm'
+                    ? 'bg-linear-to-r from-[#fb7507] via-[#dd8136] to-[#e7a46e] text-[#23160d] rounded-br-sm shadow-[0_10px_24px_rgba(251,117,7,0.18)]'
+                    : 'bg-[#2d1d10]/80 text-[#fff7ef] rounded-bl-sm shadow-[inset_2px_2px_6px_rgba(0,0,0,0.22)]'
                 }`}
               >
                 {msg.text}
@@ -126,7 +126,7 @@ export default function ChatPreview({ data, onClose }: ChatPreviewProps) {
           {isEnd ? (
             <button
               onClick={handleRestart}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold py-2.5 px-4 rounded-lg transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="w-full bg-linear-to-r from-[#fb7507] via-[#dd8136] to-[#e7a46e] text-[#23160d] font-semibold py-2.5 px-4 rounded-2xl transition-all shadow-[0_10px_24px_rgba(251,117,7,0.2)] hover:scale-[1.01]"
             >
               Start Over
             </button>
@@ -136,7 +136,7 @@ export default function ChatPreview({ data, onClose }: ChatPreviewProps) {
                 <button
                   key={node.id}
                   onClick={() => handleOptionSelect(node.id)}
-                  className="w-full bg-slate-700/60 hover:bg-slate-600/80 text-white text-sm py-2.5 px-3 rounded-lg transition-all text-left border border-slate-600/30 hover:border-slate-500/50"
+                  className="w-full bg-[#2d1d10]/70 hover:bg-[#3a2414] text-[#fff7ef] text-sm py-2.5 px-3 rounded-2xl transition-all text-left border border-[#ffe3cc]/15 hover:border-[#e7a46e]/30 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.2)]"
                 >
                   {node.text.split(' - ')[0] || node.text}
                 </button>

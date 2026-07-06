@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: [{ color: '#0f172a' }],
+  themeColor: [{ color: '#17110b' }],
 }
 
 export default function RootLayout({
@@ -39,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark" style={{ backgroundColor: '#0f172a' }}>
-      <body className={`${inter.className} antialiased bg-slate-900`}>
+    <html lang="en" className="dark" style={{ backgroundColor: '#17110b' }}>
+      <body className={`${inter.className} antialiased bg-[#17110b]`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

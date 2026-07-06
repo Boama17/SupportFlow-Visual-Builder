@@ -58,14 +58,14 @@ export default function Connectors({ nodes, activeConnector }: ConnectorsProps) 
             >
               <path
                 d="M0,0 L0,7 L10,3.5 z"
-                fill={isActive ? '#3b82f6' : '#475569'}
+                fill={isActive ? '#fb7507' : '#e7a46e'}
                 opacity="0.7"
               />
             </marker>
           </defs>
           <path
             d={cubicBezier([start.x, start.y], control1, control2, [end.x, end.y])}
-            stroke={isActive ? '#3b82f6' : '#475569'}
+            stroke={isActive ? '#fb7507' : '#e7a46e'}
             strokeWidth={isActive ? 2.5 : 1.5}
             fill="none"
             markerEnd={`url(#arrow-${connectorId})`}
@@ -80,7 +80,7 @@ export default function Connectors({ nodes, activeConnector }: ConnectorsProps) 
 
   return (
     <svg
-      className="absolute top-0 left-0 w-full h-full ms-[12rem] mt-[2rem] pointer-events-none"
+      className="absolute top-0 left-0 w-full h-full ms-48 mt-8 pointer-events-none"
       style={{ zIndex: 0 }}
     >
       {lines}

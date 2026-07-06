@@ -9,16 +9,16 @@ A visual decision tree editor for building and testing automated customer suppor
 - **Visual Flow Editor**: Render conversation decision trees as connected node diagrams on an interactive canvas
 - **Real-Time Node Editing**: Click any node to edit its text with immediate canvas updates
 - **Chat Preview Mode**: Test conversation flows by navigating through the decision tree as an end user
-- **AI Tips Sidebar**: Context-aware suggestions for improving node quality and conversation design
+- **Node Insights Panel**: Context-aware flow insights for the currently selected node
 
 ### Design System Compliance
 
 - **5-Color Palette**: Semantic colors for visual clarity
-  - Primary Blue (#3b82f6): Start nodes, primary actions
-  - Cyan (#0ea5e9): Question nodes
-  - Teal (#06b6d4): Response nodes
-  - Accent Green (#10b981): End nodes, success states
-  - Dark Background (#0f172a): Professional dark theme
+  - Primary Orange (#f97316): Start nodes, primary actions
+  - Amber (#fb923c): Question nodes
+  - Soft Orange (#fdba74): Response nodes
+  - Deep Orange (#ea580c): End nodes, success states
+  - Dark Background (#140d07): Professional dark theme
 
 - **Custom Component Architecture**: Built from scratch without UI libraries (Material UI, Bootstrap, etc.)
 - **Typography**: Inter font family throughout, WCAG AA contrast ratios
@@ -28,10 +28,10 @@ A visual decision tree editor for building and testing automated customer suppor
 
 As the "wildcard" feature, we've implemented **AI Tips** - a context-aware suggestion panel that provides real-time guidance when managers select nodes:
 
-- **Dynamic Tips**: Each node type receives tailored suggestions (opening questions need to be brief, responses need actionable solutions)
-- **Conversation Quality**: Tips help managers follow best practices for bot design
+- **Dynamic Insights**: Each node type receives tailored flow context (reach, depth, branch behavior, and guidance)
+- **Conversation Quality**: Insights help managers follow best practices for bot design
 - **Business Value**: Ensures consistent, professional customer support interactions without requiring expertise in conversation design
-- **Scalability**: Tip system can be extended with ML-driven suggestions using the selected node context
+- **Scalability**: The insights layer can be extended with richer analytics as the flow grows
 
 ## Technical Architecture
 
@@ -71,7 +71,7 @@ The application builds DOM coordinates and SVG rendering from scratch:
 ### Edit Mode
 1. Click **✏️ Edit Mode** button to enable editing
 2. Click any node on the canvas to select it
-3. The sidebar shows AI Tips for the selected node
+3. The lower insights panel shows context for the selected node
 4. Click a node again to edit its text in-place
 5. Press Enter or click outside to save changes
 
@@ -132,7 +132,7 @@ The application is built with Next.js 16 and deploys to any Node.js hosting (Ver
 │   ├── NodeCard.tsx        # Individual node component
 │   ├── Connectors.tsx      # SVG line connectors
 │   ├── ChatPreview.tsx     # Chat preview modal
-│   └── EditorPanel.tsx     # Sidebar with AI tips
+│   └── EditorPanel.tsx     # Sidebar with node editing controls
 ├── public/
 │   └── flow_data.json      # Sample conversation flow
 └── types/

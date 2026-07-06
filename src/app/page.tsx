@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Canvas from '@/src/components/Canvas';
 import ChatPreview from '@/src/components/ChatPreview';
 import EditorPanel from '@/src/components/EditorPanel';
+import FlowInsightsPanel from '@/src/components/FlowInsightsPanel';
 import { FlowData } from '@/types';
 
 export default function Page() {
@@ -12,62 +13,12 @@ export default function Page() {
   const [selectedNode, setSelectedNode] = useState<string>();
   const [nodeCount, setNodeCount] = useState(0);
 
-  const tips: Record<string, string[]> = {
-    start: [
-      'Opening message should be warm and welcoming',
-      'Clearly state what the bot can help with',
-      'Provide 2-3 distinct routing options',
-      'Use simple, jargon-free language',
-    ],
-    q1: [
-      'Ask one question at a time',
-      'Use specific, actionable questions',
-      'Avoid yes/no questions when possible',
-      'Guide users with clear language',
-    ],
-    q2: [
-      'Ensure logical flow between questions',
-      'Each option should lead to a resolution',
-      'Consider all possible user intents',
-      'Test different user paths thoroughly',
-    ],
-    end1: [
-      'Provide specific, actionable solutions',
-      'Include direct contact information',
-      'Offer alternative resources or links',
-      'Confirm the issue is resolved',
-    ],
-    end2: [
-      'Make instructions clear and concise',
-      'Provide step-by-step guidance',
-      'Offer support contact options',
-      'Include estimated resolution time',
-    ],
-    end3: [
-      'Break down complex solutions into steps',
-      'Provide screenshots or examples when helpful',
-      'Offer escalation options if needed',
-      'Include a satisfaction check',
-    ],
-    end4: [
-      'Make support ticket creation simple',
-      'Provide ticket tracking information',
-      'Set clear expectations for response time',
-      'Include relevant issue classification',
-    ],
-    complete: [
-      'Thank the user for their time',
-      'Ask for feedback on their experience',
-      'Offer additional resources or help',
-      'Provide contact info for follow-up',
-    ],
-  };
-
   useEffect(() => {
     const loadData = async () => {
       try {
         const res = await fetch('/flow_data.json');
         const flowData: FlowData = await res.json();
+        console.log('Loaded flow data from /flow_data.json:', flowData);
         setData(flowData);
         setNodeCount(flowData.nodes.length);
       } catch (error) {
@@ -97,53 +48,51 @@ export default function Page() {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <p className="text-slate-400">Loading...</p>
+      <div className="min-h-screen bg-[#17110b] flex items-center justify-center">
+        <p className="text-[#e7a46e]">Loading...</p>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 text-white flex flex-col">
-      {/* Header */}
-      <header className="h-16 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/30 flex items-center justify-between px-8 shadow-sm">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(255,227,204,0.12),_transparent_35%),linear-gradient(135deg,_#17110b_0%,_#23160d_100%)] text-[#fff7ef] flex flex-col">
+      <header className="h-16 border-b border-[#ffe3cc]/15 bg-[#23160d]/95 backdrop-blur-sm flex items-center justify-between px-8 shadow-[0_12px_30px_rgba(0,0,0,0.35)]">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
-            <span className="text-sm font-bold text-white">SF</span>
+          <div className="w-8 h-8 rounded-2xl bg-linear-to-br from-[#ffe3cc] via-[#e7a46e] to-[#fb7507] flex items-center justify-center shadow-[0_8px_16px_rgba(251,117,7,0.24)]">
+            <span className="text-sm font-bold text-[#23160d]">SF</span>
           </div>
-          <h1 className="text-xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">SupportFlow</h1>
+          <h1 className="text-xl font-semibold bg-linear-to-r from-[#ffe3cc] via-[#e7a46e] to-[#fb7507] bg-clip-text text-transparent">SupportFlow</h1>
         </div>
-        <div className="text-sm font-medium text-slate-400">
+        <div className="rounded-full border border-[#ffe3cc]/15 bg-[#2d1d10]/80 px-3 py-1 text-sm font-medium text-[#e7a46e] shadow-[inset_2px_2px_6px_rgba(0,0,0,0.28)]">
           {nodeCount} nodes
         </div>
       </header>
 
-      {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Canvas */}
-        <div className="flex-1 p-6 overflow-auto bg-gradient-to-br from-slate-950 via-blue-950/20 to-slate-950">
-          <Canvas
-            data={data}
-            isEditing={true}
-            activeNode={selectedNode}
-            onNodeEdit={handleNodeEdit}
-            onNodeSelect={setSelectedNode}
-          />
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <div className="flex-1 p-6 mb-12 overflow-auto bg-[radial-gradient(circle_at_top_left,_rgba(255,227,204,0.12),_transparent_40%),linear-gradient(135deg,_rgba(23,17,11,0.98),rgba(35,22,13,0.9))]">
+            <Canvas
+              data={data}
+              isEditing={true}
+              activeNode={selectedNode}
+              onNodeEdit={handleNodeEdit}
+              onNodeSelect={setSelectedNode}
+            />
+          </div>
         </div>
 
-        {/* Sidebar */}
-        <div className="w-96 border-l border-slate-700/50 overflow-hidden flex flex-col">
+        <div className="w-96 h-max border-l border-[#ffe3cc]/15 overflow-hidden flex flex-col">
           <EditorPanel
             data={data}
             selectedNode={selectedNode}
-            tips={tips}
             onNodeUpdate={handleNodeUpdate}
             onPreview={() => setShowPreview(true)}
           />
         </div>
       </div>
 
-      {/* Chat Preview Modal */}
+      <FlowInsightsPanel data={data} selectedNode={selectedNode} />
+
       {showPreview && <ChatPreview data={data} onClose={() => setShowPreview(false)} />}
     </main>
   );

@@ -3,7 +3,7 @@
     {
       "id": "start",
       "type": "start",
-      "text": "Welcome to Support. What is your issue?",
+      "text": "Welcome to Support.\nWhat is your issue?",
       "x": 300,
       "y": 30,
       "children": ["q1", "q2"],

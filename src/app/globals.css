@@ -47,19 +47,20 @@
 
 :root {
   color-scheme: dark;
-  --primary: #3b82f6;
-  --accent: #10b981;
-  --background: #0a0e27;
-  --foreground: #f1f5f9;
-  --card: #1a1f3a;
-  --border: #2d3748;
-  --node-start: #6366f1;
-  --node-question: #3b82f6;
-  --node-response: #0ea5e9;
-  --node-end: #10b981;
+  --primary: #fb7507;
+  --primary-strong: #dd8136;
+  --accent: #e7a46e;
+  --surface: #ffe3cc;
+  --background: #17110b;
+  --foreground: #fff7ef;
+  --card: #23160d;
+  --card-strong: #2d1d10;
+  --border: rgba(255, 227, 204, 0.16);
+  --node-start: #fb7507;
+  --node-question: #dd8136;
+  --node-response: #e7a46e;
+  --node-end: #fb7507;
 }
-
-
 
 @layer base {
   * {
@@ -67,5 +68,28 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at top left, rgba(255, 227, 204, 0.16), transparent 32%),
+      radial-gradient(circle at bottom right, rgba(251, 117, 7, 0.16), transparent 28%);
+  }
+}
+
+@layer components {
+  .neo-panel {
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(255, 227, 204, 0.14), rgba(255, 227, 204, 0.06));
+    box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.35), -8px -8px 16px rgba(255, 255, 255, 0.03);
+  }
+
+  .neo-card {
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: rgba(35, 22, 13, 0.82);
+    box-shadow: 8px 8px 18px rgba(0, 0, 0, 0.32), -6px -6px 12px rgba(255, 255, 255, 0.03);
+  }
+
+  .neo-inset {
+    box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.3), inset -2px -2px 6px rgba(255, 255, 255, 0.03);
   }
 }
