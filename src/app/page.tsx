@@ -6,6 +6,7 @@ import { FlowData } from '@/types';
 
 export default function Page() {
   const [data, setData] = useState<FlowData | null>(null);
+  const [showPreview, setShowPreview] = useState(false);
   const [selectedNode, setSelectedNode] = useState<string>();
   const [nodeCount, setNodeCount] = useState(0);
 
@@ -105,7 +106,10 @@ export default function Page() {
       {/* Header */}
       <header className="h-16 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/30 flex items-center justify-between px-8 shadow-sm">
         <div className="flex items-center gap-3">
-          <h1 className="text-xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">SupportFlow Visual Diagram</h1>
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
+            <span className="text-sm font-bold text-white">SF</span>
+          </div>
+          <h1 className="text-xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">SupportFlow</h1>
         </div>
         <div className="text-sm font-medium text-slate-400">
           {nodeCount} nodes
@@ -114,7 +118,6 @@ export default function Page() {
 
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
-
         {/* Canvas */}
         <div className="flex-1 p-6 overflow-auto bg-gradient-to-br from-slate-950 via-blue-950/20 to-slate-950">
           <Canvas
@@ -126,9 +129,9 @@ export default function Page() {
           />
         </div>
 
-        
+    
       </div>
 
-       </main>
+    </main>
   );
 }

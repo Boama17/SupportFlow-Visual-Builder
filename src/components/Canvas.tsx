@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { FlowData, FlowNode } from '@/types';
 import NodeCard from './NodeCard';
-
+import Connectors from './Connectors';
 
 interface CanvasProps {
   data: FlowData;
@@ -52,7 +52,7 @@ export default function Canvas({
       className="relative w-full bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-xl overflow-hidden border border-slate-700/50 shadow-2xl"
       style={{ height: `${canvasHeight}px` }}
     >
-
+      <Connectors nodes={data.nodes} activeConnector={undefined} />
       {data.nodes.map((node) => (
         <NodeCard
           key={node.id}
