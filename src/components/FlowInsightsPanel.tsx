@@ -6,6 +6,7 @@ import { FlowData, FlowNode } from '@/types';
 interface FlowInsightsPanelProps {
   data: FlowData;
   selectedNode?: string;
+  theme?: 'dark' | 'light';
 }
 
 interface NodeInsightsSummary {
@@ -25,8 +26,9 @@ const getNodeLabel = (node: FlowNode) => {
   return `${base} • ${node.id}`;
 };
 
-export default function FlowInsightsPanel({ data, selectedNode }: FlowInsightsPanelProps) {
+export default function FlowInsightsPanel({ data, selectedNode, theme = 'dark' }: FlowInsightsPanelProps) {
   const selectedNodeData = data.nodes.find((node) => node.id === selectedNode);
+  const isDark = theme === 'dark';
 
   const insights = useMemo<NodeInsightsSummary | null>(() => {
     if (!selectedNodeData) {
@@ -117,10 +119,10 @@ export default function FlowInsightsPanel({ data, selectedNode }: FlowInsightsPa
   }, [data, selectedNodeData]);
 
   return (
-    <section className="mx-4 mb-4 rounded-[24px] border border-[#ffe3cc]/15 bg-[#23160d]/90 backdrop-blur-xl flex flex-col shadow-[12px_12px_24px_rgba(0,0,0,0.35)]">
-      <div className="border-b border-[#ffe3cc]/15 px-4 py-3">
-        <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#e7a46e]">Node Insights</h2>
-        <p className="text-xs text-[#ffe3cc]/70">Focused view for the currently selected node</p>
+    <section className={`mx-4 mb-4 rounded-[24px] border backdrop-blur-xl flex flex-col shadow-[12px_12px_24px_rgba(0,0,0,0.18)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#23160d]/90' : 'border-[#fb7507]/15 bg-[#fffaf4]/95'}`}>
+      <div className={`border-b px-4 py-3 ${isDark ? 'border-[#ffe3cc]/15' : 'border-[#fb7507]/15'}`}>
+        <h2 className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`}>Node Insights</h2>
+        <p className={`text-xs ${isDark ? 'text-[#ffe3cc]/70' : 'text-[#7a4518]/70'}`}>Focused view for the currently selected node</p>
       </div>
 
       <div className="overflow-y-auto p-5 space-y-4">
@@ -134,55 +136,55 @@ export default function FlowInsightsPanel({ data, selectedNode }: FlowInsightsPa
           </div>
         ) : (
           <>
-            <div className="rounded-[20px] border border-[#ffe3cc]/15 bg-gradient-to-br from-[#ffe3cc]/15 via-[#e7a46e]/10 to-[#fb7507]/15 p-4 shadow-[inset_2px_2px_8px_rgba(0,0,0,0.2)]">
-              <p className="text-xs uppercase tracking-[0.3em] text-[#e7a46e]">Selected Node</p>
-              <p className="mt-2 text-xl font-semibold text-[#fff7ef]">{insights.nodeLabel}</p>
-              <p className="mt-1 text-sm text-[#ffe3cc]">{insights.nodeType} node • {insights.impact}</p>
+            <div className={`rounded-[20px] border p-4 shadow-[inset_2px_2px_8px_rgba(0,0,0,0.1)] ${isDark ? 'border-[#ffe3cc]/15 bg-linear-to-br from-[#ffe3cc]/15 via-[#e7a46e]/10 to-[#fb7507]/15' : 'border-[#fb7507]/15 bg-linear-to-br from-[#fff7ef] via-[#ffe8d2] to-[#ffd2aa]'}`}>
+              <p className={`text-xs uppercase tracking-[0.3em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`}>Selected Node</p>
+              <p className={`mt-2 text-xl font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`}>{insights.nodeLabel}</p>
+              <p className={`mt-1 text-sm ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`}>{insights.nodeType} node • {insights.impact}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="neo-card p-3">
-                <p className="text-xs uppercase tracking-[0.25em] text-[#e7a46e]">Reach</p>
-                <p className="mt-2 text-2xl font-semibold text-[#fff7ef]">{insights.reach}%</p>
+              <div className={`neo-card p-3 ${isDark ? '' : 'bg-[#fff7ef]'}`}>
+                <p className={`text-xs uppercase tracking-[0.25em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`}>Reach</p>
+                <p className={`mt-2 text-2xl font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`}>{insights.reach}%</p>
               </div>
-              <div className="neo-card p-3">
-                <p className="text-xs uppercase tracking-[0.25em] text-[#e7a46e]">Depth</p>
-                <p className="mt-2 text-2xl font-semibold text-[#fff7ef]">{insights.depth}</p>
+              <div className={`neo-card p-3 ${isDark ? '' : 'bg-[#fff7ef]'}`}>
+                <p className={`text-xs uppercase tracking-[0.25em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`}>Depth</p>
+                <p className={`mt-2 text-2xl font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`}>{insights.depth}</p>
               </div>
             </div>
 
-            <div className="neo-card p-4">
-              <h3 className="text-sm font-semibold text-[#fff7ef]">Branch Summary</h3>
-              <div className="mt-3 space-y-2 text-sm text-[#ffe3cc]">
-                <div className="rounded-2xl border border-[#ffe3cc]/15 bg-[#2d1d10]/70 p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.23)]">
-                  <p className="text-xs uppercase tracking-[0.25em] text-[#e7a46e]">Outgoing branches</p>
-                  <p className="mt-1 text-lg font-semibold text-[#fff7ef]">{insights.branchCount}</p>
+            <div className={`neo-card p-4 ${isDark ? '' : 'bg-[#fff7ef]'}`}>
+              <h3 className={`text-sm font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`}>Branch Summary</h3>
+              <div className={`mt-3 space-y-2 text-sm ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`}>
+                <div className={`rounded-2xl border p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.1)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/70' : 'border-[#fb7507]/15 bg-[#fff2e8]'}`}>
+                  <p className={`text-xs uppercase tracking-[0.25em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`}>Outgoing branches</p>
+                  <p className={`mt-1 text-lg font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`}>{insights.branchCount}</p>
                 </div>
-                <div className="rounded-2xl border border-[#ffe3cc]/15 bg-[#2d1d10]/70 p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.23)]">
-                  <p className="text-xs uppercase tracking-[0.25em] text-[#e7a46e]">Next step(s)</p>
+                <div className={`rounded-2xl border p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.1)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/70' : 'border-[#fb7507]/15 bg-[#fff2e8]'}`}>
+                  <p className={`text-xs uppercase tracking-[0.25em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`}>Next step(s)</p>
                   {insights.nextNodes.length > 0 ? (
-                    <ul className="mt-2 list-disc space-y-1 pl-5 text-[#ffe3cc]">
+                    <ul className={`mt-2 list-disc space-y-1 pl-5 ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`}>
                       {insights.nextNodes.map((nextNode) => <li key={nextNode}>{nextNode}</li>)}
                     </ul>
                   ) : (
-                    <p className="mt-2 text-[#ffe3cc]/70">No outgoing branches.</p>
+                    <p className={`mt-2 ${isDark ? 'text-[#ffe3cc]/70' : 'text-[#7a4518]/70'}`}>No outgoing branches.</p>
                   )}
                 </div>
               </div>
             </div>
 
-            <div className="neo-card p-4">
-              <h3 className="text-sm font-semibold text-[#fff7ef]">Flow Health</h3>
-              <div className="mt-3 space-y-3 text-sm text-[#ffe3cc]">
-                <div className={`rounded-2xl border p-3 ${insights.isDeadEnd ? 'border-red-400/20 bg-red-500/10' : 'border-[#e7a46e]/25 bg-[#e7a46e]/10'}`}>
-                  <p className={`font-semibold ${insights.isDeadEnd ? 'text-red-300' : 'text-[#ffe3cc]'}`}>
+            <div className={`neo-card p-4 ${isDark ? '' : 'bg-[#fff7ef]'}`}>
+              <h3 className={`text-sm font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`}>Flow Health</h3>
+              <div className={`mt-3 space-y-3 text-sm ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`}>
+                <div className={`rounded-2xl border p-3 ${insights.isDeadEnd ? 'border-red-400/20 bg-red-500/10' : isDark ? 'border-[#e7a46e]/25 bg-[#e7a46e]/10' : 'border-[#fb7507]/20 bg-[#ffe8d2]'}`}>
+                  <p className={`font-semibold ${insights.isDeadEnd ? 'text-red-300' : isDark ? 'text-[#ffe3cc]' : 'text-[#c85a08]'}`}>
                     {insights.isDeadEnd ? 'Dead end warning' : 'Healthy continuation'}
                   </p>
                   <p className="mt-1">{insights.isDeadEnd ? 'This node has no forward path.' : 'This node continues the conversation smoothly.'}</p>
                 </div>
 
-                <div className="rounded-2xl border border-[#ffe3cc]/15 bg-[#2d1d10]/70 p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.23)]">
-                  <p className="font-semibold text-[#e7a46e]">Suggested move</p>
+                <div className={`rounded-2xl border p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.1)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/70' : 'border-[#fb7507]/15 bg-[#fff2e8]'}`}>
+                  <p className={`font-semibold ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`}>Suggested move</p>
                   <p className="mt-1">{insights.suggestion}</p>
                 </div>
               </div>

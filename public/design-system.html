@@ -1,561 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupportFlow Design System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SupportFlow Design System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #ffe3cc;
+      --sand: #e7a46e;
+      --amber: #dd8136;
+      --orange: #fb7507;
+      --bg: #17110b;
+      --panel: #23160d;
+      --panel-2: #2d1d10;
+      --text: #fff7ef;
+      --muted: #f6d8bd;
+      --border: rgba(255, 227, 204, 0.15);
+    }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #140d07 0%, #24130b 100%);
-            color: #f1f5f9;
-            line-height: 1.6;
-            padding: 2rem;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, rgba(255, 227, 204, 0.16), transparent 28%), linear-gradient(135deg, var(--bg) 0%, var(--panel) 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px;
+    }
 
-        header {
-            margin-bottom: 3rem;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 2rem;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(23, 17, 11, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: 16px 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    header {
+      margin-bottom: 28px;
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(251, 117, 7, 0.18), rgba(255, 227, 204, 0.08));
+      border: 1px solid var(--border);
+    }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: #94a3b8;
-        }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--cream), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        .section {
-            margin-bottom: 3rem;
-        }
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--cream);
+    }
 
-        h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #f1f5f9;
-        }
+    h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--sand);
+    }
 
-        h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            color: #cbd5e1;
-        }
+    p, li { color: var(--muted); }
 
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+    .lead {
+      font-size: 1.02rem;
+      color: #f2dfc8;
+      max-width: 900px;
+    }
 
-        .color-card {
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #334155;
-            background: #1e293b;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .grid { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
-        .color-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-        }
+    .card {
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(255, 227, 204, 0.08), rgba(255, 227, 204, 0.04));
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
 
-        .color-sample {
-            height: 120px;
-            width: 100%;
-        }
+    .section { margin-bottom: 24px; }
 
-        .color-info {
-            padding: 1.5rem;
-        }
+    .chip {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(251, 117, 7, 0.18);
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
 
-        .color-name {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
+    .color-swatch {
+      height: 92px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+    }
 
-        .color-code {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-bottom: 0.5rem;
-        }
+    .code { font-family: 'Courier New', monospace; color: var(--sand); font-size: 0.92rem; }
 
-        .color-usage {
-            font-size: 0.9rem;
-            color: #64748b;
-            line-height: 1.5;
-        }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
 
-        .typography-section {
-            background: #1e293b;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            padding: 2rem;
-        }
+    .btn {
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      color: var(--panel);
+      background: linear-gradient(135deg, var(--cream), var(--orange));
+      box-shadow: 0 10px 20px rgba(251, 117, 7, 0.2);
+    }
 
-        .type-sample {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #334155;
-        }
+    .btn.secondary {
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(255, 227, 204, 0.12), rgba(255, 227, 204, 0.06));
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
 
-        .type-sample:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
+    .node-demo {
+      display: inline-block;
+      border-radius: 16px;
+      min-width: 132px;
+      padding: 12px 16px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--text);
+      border: 2px solid rgba(255,255,255,0.16);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+    }
+    .node-start { background: linear-gradient(135deg, var(--orange), var(--amber)); }
+    .node-question { background: linear-gradient(135deg, var(--amber), var(--sand)); }
+    .node-response { background: linear-gradient(135deg, var(--sand), var(--cream)); color: var(--panel); }
+    .node-end { background: linear-gradient(135deg, var(--orange), var(--sand)); }
 
-        .type-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #64748b;
-            margin-bottom: 0.5rem;
-        }
+    .metric {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
 
-        .type-example {
-            margin-top: 0.75rem;
-            color: #94a3b8;
-        }
+    .list { padding-left: 18px; display: grid; gap: 8px; }
 
-        .component-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+    .footer {
+      text-align: center;
+      padding-top: 18px;
+      margin-top: 24px;
+      border-top: 1px solid var(--border);
+      color: #d5b087;
+      font-size: 0.95rem;
+    }
 
-        .component-demo {
-            background: #1e293b;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .component-demo:hover {
-            border-color: #475569;
-            box-shadow: 0 8px 16px rgba(249, 115, 22, 0.1);
-        }
-
-        .demo-button {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #f97316, #ea580c);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: #334155;
-            color: #f1f5f9;
-        }
-
-        .btn-secondary:hover {
-            background: #475569;
-        }
-
-        .btn-success {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-        }
-
-        .btn-success:hover {
-            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
-        }
-
-        .node-demo {
-            display: inline-block;
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            font-weight: 600;
-            border: 2px solid;
-            min-width: 140px;
-        }
-
-        .node-start {
-            background: #f97316;
-            border-color: #f97316;
-            color: white;
-        }
-
-        .node-question {
-            background: #fb923c;
-            border-color: #fb923c;
-            color: white;
-        }
-
-        .node-response {
-            background: #fdba74;
-            border-color: #fdba74;
-            color: white;
-        }
-
-        .node-end {
-            background: #ea580c;
-            border-color: #ea580c;
-            color: white;
-        }
-
-        .spacing-demo {
-            background: #1e293b;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            padding: 2rem;
-        }
-
-        .spacing-item {
-            margin-bottom: 2rem;
-        }
-
-        .spacing-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .spacing-bar {
-            background: linear-gradient(90deg, #f97316, #fb923c);
-            border-radius: 4px;
-            height: 20px;
-            margin-bottom: 0.5rem;
-        }
-
-        .spacing-label {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        .accessibility-section {
-            background: #1e293b;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            padding: 2rem;
-        }
-
-        .accessibility-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #334155;
-        }
-
-        .accessibility-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .accessibility-label {
-            font-weight: 600;
-            color: #cbd5e1;
-            margin-bottom: 0.5rem;
-        }
-
-        .accessibility-detail {
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-
-        code {
-            background: #0a0e27;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: #22d3ee;
-        }
-
-        .footer {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #334155;
-            color: #64748b;
-            margin-top: 4rem;
-        }
-
-        .footer-version {
-            font-size: 0.9rem;
-        }
-    </style>
+    @media print {
+      body { padding: 0; background: white; color: #111; }
+      .container {
+        max-width: none;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: white;
+        padding: 20px;
+      }
+      header, .card { background: white; color: #111; box-shadow: none; }
+      h1, h2, h3, p, li, .code, .metric { color: #111; }
+      .chip { background: #fff2e6; color: #c25a00; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>SupportFlow Design System</h1>
-            <p class="subtitle">Official design specification for the visual conversation flow builder</p>
-        </header>
+  <div class="container">
+    <header>
+      <div class="chip">Submission-ready design brief</div>
+      <h1>SupportFlow Design System</h1>
+      <p class="lead">A warm, premium interface language for a visual support-flow builder that turns complex conversation design into a clear and confident experience.</p>
+    </header>
 
-        <!-- Color System -->
-        <section class="section">
-            <h2>Color System</h2>
-            <p style="margin-bottom: 2rem; color: #cbd5e1;">The design system uses a carefully selected 5-color palette that ensures visual clarity and accessibility across all UI elements.</p>
-            
-            <div class="color-grid">
-                <div class="color-card">
-                    <div class="color-sample" style="background: #3b82f6;"></div>
-                    <div class="color-info">
-                        <div class="color-name">Primary Blue</div>
-                        <div class="color-code">#3b82f6</div>
-                        <div class="color-usage">Start nodes, primary actions, focus states</div>
-                    </div>
-                </div>
+    <section class="section">
+      <h2>1. Product Vision</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Purpose</h3>
+          <p>SupportFlow enables support teams to design, test, and refine conversational journeys without relying on spreadsheets or technical tools.</p>
+        </div>
+        <div class="card">
+          <h3>Business Value</h3>
+          <p>It shortens the design cycle, improves consistency, and gives teams a clearer way to manage customer support experiences at scale.</p>
+        </div>
+      </div>
+    </section>
 
-                <div class="color-card">
-                    <div class="color-sample" style="background: #0ea5e9;"></div>
-                    <div class="color-info">
-                        <div class="color-name">Cyan</div>
-                        <div class="color-code">#0ea5e9</div>
-                        <div class="color-usage">Question nodes, interactive highlights</div>
-                    </div>
-                </div>
+    <section class="section">
+      <h2>2. Visual Language</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="color-swatch" style="background:#ffe3cc"></div>
+          <h3>Soft Cream</h3>
+          <div class="code">#ffe3cc</div>
+          <p>Used for light surfaces, soft highlights, and subtle contrast.</p>
+        </div>
+        <div class="card">
+          <div class="color-swatch" style="background:#e7a46e"></div>
+          <h3>Warm Sand</h3>
+          <div class="code">#e7a46e</div>
+          <p>Used for secondary accents and friendly UI emphasis.</p>
+        </div>
+        <div class="card">
+          <div class="color-swatch" style="background:#dd8136"></div>
+          <h3>Amber</h3>
+          <div class="code">#dd8136</div>
+          <p>Used for active states, supporting actions, and interactive highlights.</p>
+        </div>
+        <div class="card">
+          <div class="color-swatch" style="background:#fb7507"></div>
+          <h3>Primary Orange</h3>
+          <div class="code">#fb7507</div>
+          <p>Used for key actions, primary node states, and core focal points.</p>
+        </div>
+        <div class="card">
+          <div class="color-swatch" style="background:#23160d"></div>
+          <h3>Surface Panel</h3>
+          <div class="code">#23160d</div>
+          <p>Used for elevated cards, panels, and the main UI shell.</p>
+        </div>
+        <div class="card">
+          <div class="color-swatch" style="background:#17110b"></div>
+          <h3>Deep Background</h3>
+          <div class="code">#17110b</div>
+          <p>Used for the full app background to create contrast and depth.</p>
+        </div>
+      </div>
+    </section>
 
-                <div class="color-card">
-                    <div class="color-sample" style="background: #06b6d4;"></div>
-                    <div class="color-info">
-                        <div class="color-name">Teal</div>
-                        <div class="color-code">#06b6d4</div>
-                        <div class="color-usage">Response nodes, secondary actions</div>
-                    </div>
-                </div>
+    <section class="section">
+      <h2>3. Interface Components</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Buttons and Actions</h3>
+          <div class="button-row">
+            <button class="btn">Preview Flow</button>
+            <button class="btn secondary">View Insights</button>
+          </div>
+          <p style="margin-top:10px;">Rounded buttons, soft depth, and clear contrast guide users toward the next step.</p>
+        </div>
+        <div class="card">
+          <h3>Node Variants</h3>
+          <div class="button-row">
+            <span class="node-demo node-start">Start</span>
+            <span class="node-demo node-question">Question</span>
+            <span class="node-demo node-response">Response</span>
+            <span class="node-demo node-end">End</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <div class="color-card">
-                    <div class="color-sample" style="background: #10b981;"></div>
-                    <div class="color-info">
-                        <div class="color-name">Emerald</div>
-                        <div class="color-code">#10b981</div>
-                        <div class="color-usage">End nodes, success states, confirmations</div>
-                    </div>
-                </div>
+    <section class="section">
+      <h2>4. Wildcard Feature</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Why it matters</h3>
+          <ul class="list">
+            <li>It turns the builder into a thinking assistant rather than a static diagram tool.</li>
+            <li>It highlights weak branches, dead-end paths, and strong continuation points.</li>
+            <li>It helps non-technical users make better design decisions without needing extra training.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Business impact</h3>
+          <ul class="list">
+            <li>Reduces rework by surfacing design issues earlier.</li>
+            <li>Improves support quality by keeping flows more consistent and intentional.</li>
+            <li>Supports faster scaling as the number of flows and conversations grows.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-                <div class="color-card">
-                    <div class="color-sample" style="background: #0a0e27;"></div>
-                    <div class="color-info">
-                        <div class="color-name">Dark Background</div>
-                        <div class="color-code">#0a0e27</div>
-                        <div class="color-usage">Primary background, contrast base</div>
-                    </div>
-                </div>
+    <section class="section">
+      <h2>5. Design Principles</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="metric">01</div>
+          <h3>Clarity</h3>
+          <p>Every interaction is easy to understand, with strong hierarchy and obvious visual structure.</p>
+        </div>
+        <div class="card">
+          <div class="metric">02</div>
+          <h3>Warmth</h3>
+          <p>The orange palette feels energetic and modern while remaining approachable for business users.</p>
+        </div>
+        <div class="card">
+          <div class="metric">03</div>
+          <h3>Confidence</h3>
+          <p>Rounded surfaces and polished elevation create a premium product experience that feels finished.</p>
+        </div>
+      </div>
+    </section>
 
-                <div class="color-card">
-                    <div class="color-sample" style="background: #1e293b;"></div>
-                    <div class="color-info">
-                        <div class="color-name">Card Surface</div>
-                        <div class="color-code">#1e293b</div>
-                        <div class="color-usage">Panel backgrounds, elevated surfaces</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Typography -->
-        <section class="section">
-            <h2>Typography</h2>
-            <p style="margin-bottom: 2rem; color: #cbd5e1;">All text uses the Inter font family for consistent, readable presentation across all platform sizes.</p>
-            
-            <div class="typography-section">
-                <div class="type-sample">
-                    <div class="type-label">Heading 1 (Display)</div>
-                    <h1 style="font-size: 2.5rem; margin: 0;">Welcome to SupportFlow</h1>
-                    <div class="type-example">700 weight, 2.5rem size, used for page titles</div>
-                </div>
-
-                <div class="type-sample">
-                    <div class="type-label">Heading 2 (Large)</div>
-                    <h2 style="font-size: 1.8rem; margin: 0;">Color System</h2>
-                    <div class="type-example">700 weight, 1.8rem size, used for section headers</div>
-                </div>
-
-                <div class="type-sample">
-                    <div class="type-label">Heading 3 (Medium)</div>
-                    <h3 style="font-size: 1.2rem; margin: 0;">Design Principles</h3>
-                    <div class="type-example">600 weight, 1.2rem size, used for subsection headers</div>
-                </div>
-
-                <div class="type-sample">
-                    <div class="type-label">Body Text (Regular)</div>
-                    <p style="margin: 0; font-size: 1rem;">The quick brown fox jumps over the lazy dog. This is standard body text used throughout the application interface.</p>
-                    <div class="type-example">400 weight, 1rem size, line-height 1.6, used for paragraphs</div>
-                </div>
-
-                <div class="type-sample">
-                    <div class="type-label">Body Text (Emphasized)</div>
-                    <p style="margin: 0; font-size: 1rem; font-weight: 600;">Important information is presented with 600 weight.</p>
-                    <div class="type-example">600 weight, 1rem size, used for emphasis and labels</div>
-                </div>
-
-                <div class="type-sample">
-                    <div class="type-label">Small Text (Caption)</div>
-                    <p style="margin: 0; font-size: 0.9rem; color: #94a3b8;">Helper text and descriptions use smaller sizing.</p>
-                    <div class="type-example">400 weight, 0.9rem size, used for captions and hints</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Components -->
-        <section class="section">
-            <h2>Components</h2>
-            
-            <h3>Buttons</h3>
-            <div class="component-grid">
-                <div class="component-demo">
-                    <div class="type-label">Primary Button</div>
-                    <button class="demo-button btn-primary">Save Changes</button>
-                </div>
-                <div class="component-demo">
-                    <div class="type-label">Secondary Button</div>
-                    <button class="demo-button btn-secondary">Cancel</button>
-                </div>
-                <div class="component-demo">
-                    <div class="type-label">Success Button</div>
-                    <button class="demo-button btn-success">Preview Flow</button>
-                </div>
-            </div>
-
-            <h3>Flow Nodes</h3>
-            <div class="component-grid">
-                <div class="component-demo">
-                    <div class="type-label">Start Node</div>
-                    <div class="node-demo node-start">Start</div>
-                </div>
-                <div class="component-demo">
-                    <div class="type-label">Question Node</div>
-                    <div class="node-demo node-question">Question</div>
-                </div>
-                <div class="component-demo">
-                    <div class="type-label">Response Node</div>
-                    <div class="node-demo node-response">Response</div>
-                </div>
-                <div class="component-demo">
-                    <div class="type-label">End Node</div>
-                    <div class="node-demo node-end">End</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Spacing & Layout -->
-        <section class="section">
-            <h2>Spacing & Layout</h2>
-            <p style="margin-bottom: 2rem; color: #cbd5e1;">Consistent spacing creates visual rhythm and improves content hierarchy.</p>
-            
-            <div class="spacing-demo">
-                <div class="spacing-item">
-                    <div class="spacing-bar" style="width: 8%;"></div>
-                    <div class="spacing-label">0.5rem (8px) - Minimal spacing</div>
-                </div>
-                <div class="spacing-item">
-                    <div class="spacing-bar" style="width: 16%;"></div>
-                    <div class="spacing-label">1rem (16px) - Small gaps</div>
-                </div>
-                <div class="spacing-item">
-                    <div class="spacing-bar" style="width: 32%;"></div>
-                    <div class="spacing-label">2rem (32px) - Component spacing</div>
-                </div>
-                <div class="spacing-item">
-                    <div class="spacing-bar" style="width: 48%;"></div>
-                    <div class="spacing-label">3rem (48px) - Section spacing</div>
-                </div>
-                <div class="spacing-item">
-                    <div class="spacing-bar" style="width: 64%;"></div>
-                    <div class="spacing-label">4rem (64px) - Major section gaps</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Accessibility -->
-        <section class="section">
-            <h2>Accessibility</h2>
-            <p style="margin-bottom: 2rem; color: #cbd5e1;">All components meet WCAG AA standards for color contrast and usability.</p>
-            
-            <div class="accessibility-section">
-                <div class="accessibility-item">
-                    <div class="accessibility-label">Color Contrast</div>
-                    <div class="accessibility-detail">All text meets WCAG AA minimum contrast ratios. Primary text on dark backgrounds: 12.6:1 (exceeds 4.5:1 requirement)</div>
-                </div>
-                <div class="accessibility-item">
-                    <div class="accessibility-label">Focus Indicators</div>
-                    <div class="accessibility-detail">All interactive elements display clear focus states with 2-3px outline rings in primary blue</div>
-                </div>
-                <div class="accessibility-item">
-                    <div class="accessibility-label">Keyboard Navigation</div>
-                    <div class="accessibility-detail">Tab order follows visual hierarchy. Enter submits forms. Escape closes modals. All interactions have keyboard equivalents</div>
-                </div>
-                <div class="accessibility-item">
-                    <div class="accessibility-label">Screen Reader Support</div>
-                    <div class="accessibility-detail">Semantic HTML with proper heading hierarchy. ARIA labels on interactive elements. Skip navigation for assistive technologies</div>
-                </div>
-                <div class="accessibility-item">
-                    <div class="accessibility-label">Mobile Responsiveness</div>
-                    <div class="accessibility-detail">Touch targets minimum 44x44px. Responsive layout adapts from 320px mobile to 4K displays. Portrait and landscape support</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Guidelines -->
-        <section class="section">
-            <h2>Design Guidelines</h2>
-            
-            <h3>Do's</h3>
-            <ul style="color: #cbd5e1; line-height: 2; padding-left: 2rem; margin-bottom: 1.5rem;">
-                <li>Use semantic colors for node types (blue=start, cyan=question, teal=response, green=end)</li>
-                <li>Maintain minimum 2rem spacing between major sections</li>
-                <li>Use Inter font throughout for consistency</li>
-                <li>Apply 12px border-radius for card elements, 8px for smaller components</li>
-                <li>Ensure all interactive elements have visible hover and focus states</li>
-            </ul>
-
-            <h3>Don'ts</h3>
-            <ul style="color: #cbd5e1; line-height: 2; padding-left: 2rem;">
-                <li>Do not use more than 5 colors in any single interface</li>
-                <li>Do not add decorative elements that distract from content</li>
-                <li>Do not use color alone to communicate information</li>
-                <li>Do not apply transitions longer than 300ms</li>
-                <li>Do not create custom fonts or override Inter</li>
-            </ul>
-        </section>
-
-        <footer class="footer">
-            <p>SupportFlow Design System v1.0</p>
-            <p class="footer-version">Last updated: 2026 | Official specification document</p>
-        </footer>
+    <div class="footer">
+      SupportFlow Design System v1.1 • Prepared for presentation and PDF submission
     </div>
+  </div>
 </body>
 </html>

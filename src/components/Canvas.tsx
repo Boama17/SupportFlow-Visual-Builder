@@ -11,6 +11,7 @@ interface CanvasProps {
   activeNode?: string;
   onNodeEdit?: (id: string, text: string) => void;
   onNodeSelect?: (id: string) => void;
+  theme?: 'dark' | 'light';
 }
 
 export default function Canvas({
@@ -19,8 +20,10 @@ export default function Canvas({
   activeNode,
   onNodeEdit,
   onNodeSelect,
+  theme = 'dark',
 }: CanvasProps) {
   const [editingId, setEditingId] = useState<string | undefined>();
+  const isDark = theme === 'dark';
   const [editingText, setEditingText] = useState('');
 
   const handleNodeClick = (nodeId: string) => {
@@ -49,7 +52,7 @@ export default function Canvas({
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-[24px] border border-[#ffe3cc]/15 bg-[radial-gradient(circle_at_top_left,_rgba(255,227,204,0.16),_transparent_35%),linear-gradient(135deg,_#17110b_0%,_#23160d_100%)] shadow-[20px_20px_44px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.05)]"
+      className={`relative w-full overflow-hidden rounded-[24px] border shadow-[20px_20px_44px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] ${isDark ? 'border-[#ffe3cc]/15 bg-[radial-gradient(circle_at_top_left,_rgba(255,227,204,0.16),_transparent_35%),linear-gradient(135deg,_#17110b_0%,_#23160d_100%)]' : 'border-[#fb7507]/15 bg-[radial-gradient(circle_at_top_left,_rgba(251,117,7,0.12),_transparent_35%),linear-gradient(135deg,_#fffaf4_0%,_#ffebd9_100%)]'}`}
       style={{ height: `${canvasHeight}px` }}
     >
       <Connectors nodes={data.nodes} activeConnector={undefined} />

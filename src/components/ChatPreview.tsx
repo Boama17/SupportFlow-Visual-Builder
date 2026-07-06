@@ -6,6 +6,7 @@ import { FlowData, FlowNode } from '@/types';
 interface ChatPreviewProps {
   data: FlowData;
   onClose: () => void;
+  theme?: 'dark' | 'light';
 }
 
 interface Message {
@@ -14,8 +15,9 @@ interface Message {
   nodeId?: string;
 }
 
-export default function ChatPreview({ data, onClose }: ChatPreviewProps) {
+export default function ChatPreview({ data, onClose, theme = 'dark' }: ChatPreviewProps) {
   const [messages, setMessages] = useState<Message[]>([]);
+  const isDark = theme === 'dark';
   const [currentNodeId, setCurrentNodeId] = useState<string | null>(null);
   const nodeMap = new Map(data.nodes.map((n) => [n.id, n]));
 
@@ -95,12 +97,12 @@ export default function ChatPreview({ data, onClose }: ChatPreviewProps) {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-[#23160d]/95 backdrop-blur-sm rounded-[24px] w-full max-w-md shadow-[16px_16px_40px_rgba(0,0,0,0.4)] border border-[#ffe3cc]/15 flex flex-col" style={{ height: '600px' }}>
-        <div className="flex justify-between items-center p-5 border-b border-[#ffe3cc]/15 bg-linear-to-r from-[#2d1d10]/90 to-[#23160d]/80">
-          <h2 className="text-lg font-semibold text-[#fff7ef]">Support Chat</h2>
+      <div className={`backdrop-blur-sm rounded-[24px] w-full max-w-md shadow-[16px_16px_40px_rgba(0,0,0,0.25)] border flex flex-col ${isDark ? 'bg-[#23160d]/95 border-[#ffe3cc]/15' : 'bg-[#fffaf4]/95 border-[#fb7507]/15'}`} style={{ height: '600px' }}>
+        <div className={`flex justify-between items-center p-5 border-b ${isDark ? 'border-[#ffe3cc]/15 bg-linear-to-r from-[#2d1d10]/90 to-[#23160d]/80' : 'border-[#fb7507]/15 bg-linear-to-r from-[#fff2e8] to-[#ffe8d2]'}`}>
+          <h2 className={`text-lg font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`}>Support Chat</h2>
           <button
             onClick={onClose}
-            className="text-[#e7a46e] hover:text-[#ffe3cc] transition-colors text-2xl leading-none"
+            className={`transition-colors text-2xl leading-none ${isDark ? 'text-[#e7a46e] hover:text-[#ffe3cc]' : 'text-[#c85a08] hover:text-[#fb7507]'}`}
           >
             ×
           </button>
@@ -113,7 +115,7 @@ export default function ChatPreview({ data, onClose }: ChatPreviewProps) {
                 className={`max-w-xs px-4 py-2.5 rounded-[18px] text-sm leading-relaxed ${
                   msg.type === 'user'
                     ? 'bg-linear-to-r from-[#fb7507] via-[#dd8136] to-[#e7a46e] text-[#23160d] rounded-br-sm shadow-[0_10px_24px_rgba(251,117,7,0.18)]'
-                    : 'bg-[#2d1d10]/80 text-[#fff7ef] rounded-bl-sm shadow-[inset_2px_2px_6px_rgba(0,0,0,0.22)]'
+                    : `${isDark ? 'bg-[#2d1d10]/80 text-[#fff7ef]' : 'bg-[#fff2e8] text-[#5b2b0c]'} rounded-bl-sm shadow-[inset_2px_2px_6px_rgba(0,0,0,0.12)]`
                 }`}
               >
                 {msg.text}

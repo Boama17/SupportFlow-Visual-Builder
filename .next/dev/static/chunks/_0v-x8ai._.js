@@ -334,9 +334,10 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function Canvas({ data, isEditing, activeNode, onNodeEdit, onNodeSelect }) {
+function Canvas({ data, isEditing, activeNode, onNodeEdit, onNodeSelect, theme = 'dark' }) {
     _s();
     const [editingId, setEditingId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])();
+    const isDark = theme === 'dark';
     const [editingText, setEditingText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const handleNodeClick = (nodeId)=>{
         onNodeSelect?.(nodeId);
@@ -360,7 +361,7 @@ function Canvas({ data, isEditing, activeNode, onNodeEdit, onNodeSelect }) {
     };
     const canvasHeight = 700;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "relative w-full overflow-hidden rounded-[24px] border border-[#ffe3cc]/15 bg-[radial-gradient(circle_at_top_left,_rgba(255,227,204,0.16),_transparent_35%),linear-gradient(135deg,_#17110b_0%,_#23160d_100%)] shadow-[20px_20px_44px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.05)]",
+        className: `relative w-full overflow-hidden rounded-[24px] border shadow-[20px_20px_44px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.05)] ${isDark ? 'border-[#ffe3cc]/15 bg-[radial-gradient(circle_at_top_left,_rgba(255,227,204,0.16),_transparent_35%),linear-gradient(135deg,_#17110b_0%,_#23160d_100%)]' : 'border-[#fb7507]/15 bg-[radial-gradient(circle_at_top_left,_rgba(251,117,7,0.12),_transparent_35%),linear-gradient(135deg,_#fffaf4_0%,_#ffebd9_100%)]'}`,
         style: {
             height: `${canvasHeight}px`
         },
@@ -370,7 +371,7 @@ function Canvas({ data, isEditing, activeNode, onNodeEdit, onNodeSelect }) {
                 activeConnector: undefined
             }, void 0, false, {
                 fileName: "[project]/src/components/Canvas.tsx",
-                lineNumber: 55,
+                lineNumber: 58,
                 columnNumber: 7
             }, this),
             data.nodes.map((node)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$NodeCard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -384,13 +385,13 @@ function Canvas({ data, isEditing, activeNode, onNodeEdit, onNodeSelect }) {
                     onEditingChange: setEditingText
                 }, node.id, false, {
                     fileName: "[project]/src/components/Canvas.tsx",
-                    lineNumber: 57,
+                    lineNumber: 60,
                     columnNumber: 9
                 }, this))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Canvas.tsx",
-        lineNumber: 51,
+        lineNumber: 54,
         columnNumber: 5
     }, this);
 }
@@ -415,9 +416,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var _s = __turbopack_context__.k.signature();
 'use client';
 ;
-function ChatPreview({ data, onClose }) {
+function ChatPreview({ data, onClose, theme = 'dark' }) {
     _s();
     const [messages, setMessages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const isDark = theme === 'dark';
     const [currentNodeId, setCurrentNodeId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const nodeMap = new Map(data.nodes.map((n)=>[
             n.id,
@@ -514,35 +516,35 @@ function ChatPreview({ data, onClose }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "bg-[#23160d]/95 backdrop-blur-sm rounded-[24px] w-full max-w-md shadow-[16px_16px_40px_rgba(0,0,0,0.4)] border border-[#ffe3cc]/15 flex flex-col",
+            className: `backdrop-blur-sm rounded-[24px] w-full max-w-md shadow-[16px_16px_40px_rgba(0,0,0,0.25)] border flex flex-col ${isDark ? 'bg-[#23160d]/95 border-[#ffe3cc]/15' : 'bg-[#fffaf4]/95 border-[#fb7507]/15'}`,
             style: {
                 height: '600px'
             },
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex justify-between items-center p-5 border-b border-[#ffe3cc]/15 bg-linear-to-r from-[#2d1d10]/90 to-[#23160d]/80",
+                    className: `flex justify-between items-center p-5 border-b ${isDark ? 'border-[#ffe3cc]/15 bg-linear-to-r from-[#2d1d10]/90 to-[#23160d]/80' : 'border-[#fb7507]/15 bg-linear-to-r from-[#fff2e8] to-[#ffe8d2]'}`,
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "text-lg font-semibold text-[#fff7ef]",
+                            className: `text-lg font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                             children: "Support Chat"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ChatPreview.tsx",
-                            lineNumber: 100,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: onClose,
-                            className: "text-[#e7a46e] hover:text-[#ffe3cc] transition-colors text-2xl leading-none",
+                            className: `transition-colors text-2xl leading-none ${isDark ? 'text-[#e7a46e] hover:text-[#ffe3cc]' : 'text-[#c85a08] hover:text-[#fb7507]'}`,
                             children: "×"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ChatPreview.tsx",
-                            lineNumber: 101,
+                            lineNumber: 103,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/ChatPreview.tsx",
-                    lineNumber: 99,
+                    lineNumber: 101,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -550,21 +552,21 @@ function ChatPreview({ data, onClose }) {
                     children: messages.map((msg, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: `flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: `max-w-xs px-4 py-2.5 rounded-[18px] text-sm leading-relaxed ${msg.type === 'user' ? 'bg-linear-to-r from-[#fb7507] via-[#dd8136] to-[#e7a46e] text-[#23160d] rounded-br-sm shadow-[0_10px_24px_rgba(251,117,7,0.18)]' : 'bg-[#2d1d10]/80 text-[#fff7ef] rounded-bl-sm shadow-[inset_2px_2px_6px_rgba(0,0,0,0.22)]'}`,
+                                className: `max-w-xs px-4 py-2.5 rounded-[18px] text-sm leading-relaxed ${msg.type === 'user' ? 'bg-linear-to-r from-[#fb7507] via-[#dd8136] to-[#e7a46e] text-[#23160d] rounded-br-sm shadow-[0_10px_24px_rgba(251,117,7,0.18)]' : `${isDark ? 'bg-[#2d1d10]/80 text-[#fff7ef]' : 'bg-[#fff2e8] text-[#5b2b0c]'} rounded-bl-sm shadow-[inset_2px_2px_6px_rgba(0,0,0,0.12)]`}`,
                                 children: msg.text
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ChatPreview.tsx",
-                                lineNumber: 112,
+                                lineNumber: 114,
                                 columnNumber: 15
                             }, this)
                         }, idx, false, {
                             fileName: "[project]/src/components/ChatPreview.tsx",
-                            lineNumber: 111,
+                            lineNumber: 113,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/components/ChatPreview.tsx",
-                    lineNumber: 109,
+                    lineNumber: 111,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -575,7 +577,7 @@ function ChatPreview({ data, onClose }) {
                         children: "Start Over"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ChatPreview.tsx",
-                        lineNumber: 127,
+                        lineNumber: 129,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "space-y-2",
@@ -585,28 +587,28 @@ function ChatPreview({ data, onClose }) {
                                 children: node.text.split(' - ')[0] || node.text
                             }, node.id, false, {
                                 fileName: "[project]/src/components/ChatPreview.tsx",
-                                lineNumber: 136,
+                                lineNumber: 138,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/ChatPreview.tsx",
-                        lineNumber: 134,
+                        lineNumber: 136,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/ChatPreview.tsx",
-                    lineNumber: 125,
+                    lineNumber: 127,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/ChatPreview.tsx",
-            lineNumber: 98,
+            lineNumber: 100,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/ChatPreview.tsx",
-        lineNumber: 97,
+        lineNumber: 99,
         columnNumber: 5
     }, this);
 }
@@ -628,8 +630,9 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 'use client';
 ;
-function EditorPanel({ data, selectedNode, onNodeUpdate, onNodeDelete, onPreview }) {
+function EditorPanel({ data, selectedNode, onNodeUpdate, onNodeDelete, onPreview, theme = 'dark' }) {
     const selectedNodeData = data.nodes.find((n)=>n.id === selectedNode);
+    const isDark = theme === 'dark';
     const handleTextChange = (text)=>{
         if (selectedNode) {
             onNodeUpdate?.(selectedNode, {
@@ -638,21 +641,21 @@ function EditorPanel({ data, selectedNode, onNodeUpdate, onNodeDelete, onPreview
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "neo-panel h-full flex flex-col rounded-[24px] m-3 mb-4 overflow-hidden bg-[#23160d]/90",
+        className: `neo-panel h-full flex flex-col rounded-[24px] m-3 mb-4 overflow-hidden ${isDark ? 'bg-[#23160d]/90' : 'bg-[#fffaf4]/95'}`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "border-b border-[#ffe3cc]/15 bg-[#2d1d10]/80 px-4 py-3",
+                className: `border-b px-4 py-3 ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/80' : 'border-[#fb7507]/15 bg-[#fff2e8]/90'}`,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                    className: "text-sm font-semibold uppercase tracking-[0.3em] text-[#e7a46e]",
+                    className: `text-sm font-semibold uppercase tracking-[0.3em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                     children: "Node Editor"
                 }, void 0, false, {
                     fileName: "[project]/src/components/EditorPanel.tsx",
-                    lineNumber: 31,
+                    lineNumber: 34,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/EditorPanel.tsx",
-                lineNumber: 30,
+                lineNumber: 33,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -663,182 +666,182 @@ function EditorPanel({ data, selectedNode, onNodeUpdate, onNodeDelete, onPreview
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-lg font-bold text-[#fff7ef] mb-4",
+                                    className: `text-lg font-bold mb-4 ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                     children: "Edit Node"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 38,
+                                    lineNumber: 41,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-xs text-[#e7a46e] mb-1 font-semibold",
+                                    className: `text-xs mb-1 font-semibold ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                                     children: "Node Type"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 39,
+                                    lineNumber: 42,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-sm text-[#ffe3cc] capitalize mb-4",
+                                    className: `text-sm capitalize mb-4 ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`,
                                     children: [
                                         selectedNodeData.type,
                                         " Node"
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 40,
+                                    lineNumber: 43,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/EditorPanel.tsx",
-                            lineNumber: 37,
+                            lineNumber: 40,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "text-sm font-semibold text-[#fff7ef] block mb-2",
+                                    className: `text-sm font-semibold block mb-2 ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                     children: "Node ID"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 44,
+                                    lineNumber: 47,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     type: "text",
                                     value: selectedNodeData.id,
                                     disabled: true,
-                                    className: "w-full bg-[#2d1d10]/70 border border-[#e7a46e]/25 rounded-2xl px-3 py-2 text-sm text-[#ffe3cc] opacity-70 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.3)]"
+                                    className: `w-full rounded-2xl border px-3 py-2 text-sm opacity-70 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.08)] ${isDark ? 'border-[#e7a46e]/25 bg-[#2d1d10]/70 text-[#ffe3cc]' : 'border-[#fb7507]/20 bg-[#fff7ef] text-[#5b2b0c]'}`
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 45,
+                                    lineNumber: 48,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/EditorPanel.tsx",
-                            lineNumber: 43,
+                            lineNumber: 46,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "text-sm font-semibold text-[#fff7ef] block mb-2",
+                                    className: `text-sm font-semibold block mb-2 ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                     children: "Message Text"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 54,
+                                    lineNumber: 57,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                                     value: selectedNodeData.text,
                                     onChange: (e)=>handleTextChange(e.target.value),
-                                    className: "w-full bg-[#2d1d10]/70 border border-[#e7a46e]/25 rounded-2xl px-3 py-2 text-sm text-[#fff7ef] focus:border-[#fb7507]/60 focus:outline-none transition-colors resize-none shadow-[inset_2px_2px_6px_rgba(0,0,0,0.3)]",
+                                    className: `w-full rounded-2xl border px-3 py-2 text-sm focus:border-[#fb7507]/60 focus:outline-none transition-colors resize-none shadow-[inset_2px_2px_6px_rgba(0,0,0,0.08)] ${isDark ? 'border-[#e7a46e]/25 bg-[#2d1d10]/70 text-[#fff7ef]' : 'border-[#fb7507]/20 bg-[#fff7ef] text-[#23160d]'}`,
                                     rows: 3
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 55,
+                                    lineNumber: 58,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/EditorPanel.tsx",
-                            lineNumber: 53,
+                            lineNumber: 56,
                             columnNumber: 13
                         }, this),
                         selectedNodeData.options && selectedNodeData.options.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "text-sm font-semibold text-[#fff7ef] block mb-2",
+                                    className: `text-sm font-semibold block mb-2 ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                     children: "Response Options"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 65,
+                                    lineNumber: 68,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "space-y-2",
                                     children: selectedNodeData.options.map((option, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "neo-card px-3 py-2 text-sm text-[#ffe3cc]",
+                                            className: `rounded-2xl border px-3 py-2 text-sm shadow-[inset_2px_2px_6px_rgba(0,0,0,0.08)] ${isDark ? 'border-[#e7a46e]/20 bg-[#2d1d10]/80 text-[#ffe3cc]' : 'border-[#fb7507]/20 bg-[#fff7ef] text-[#5b2b0c]'}`,
                                             children: option
                                         }, idx, false, {
                                             fileName: "[project]/src/components/EditorPanel.tsx",
-                                            lineNumber: 68,
+                                            lineNumber: 71,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/EditorPanel.tsx",
-                                    lineNumber: 66,
+                                    lineNumber: 69,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/EditorPanel.tsx",
-                            lineNumber: 64,
+                            lineNumber: 67,
                             columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/EditorPanel.tsx",
-                    lineNumber: 36,
+                    lineNumber: 39,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "h-full flex items-center justify-center text-center",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-[#e7a46e] text-sm mb-1",
+                                className: `text-sm mb-1 ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                                 children: "No node selected"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/EditorPanel.tsx",
-                                lineNumber: 79,
+                                lineNumber: 85,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "text-[#ffe3cc]/70 text-xs",
+                                className: `text-xs ${isDark ? 'text-[#ffe3cc]/70' : 'text-[#7a4518]/70'}`,
                                 children: "Select a node on the canvas to edit"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/EditorPanel.tsx",
-                                lineNumber: 80,
+                                lineNumber: 86,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/EditorPanel.tsx",
-                        lineNumber: 78,
+                        lineNumber: 84,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/EditorPanel.tsx",
-                    lineNumber: 77,
+                    lineNumber: 83,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/EditorPanel.tsx",
-                lineNumber: 34,
+                lineNumber: 37,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "border-t border-[#ffe3cc]/15 p-6",
+                className: `border-t p-6 ${isDark ? 'border-[#ffe3cc]/15' : 'border-[#fb7507]/15'}`,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     onClick: onPreview,
                     className: "w-full rounded-2xl bg-gradient-to-r from-[#fb7507] via-[#dd8136] to-[#e7a46e] px-4 py-3 font-semibold text-[#23160d] shadow-[0_10px_24px_rgba(251,117,7,0.24)] transition-transform hover:scale-[1.01]",
                     children: "Preview Flow"
                 }, void 0, false, {
                     fileName: "[project]/src/components/EditorPanel.tsx",
-                    lineNumber: 87,
+                    lineNumber: 93,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/EditorPanel.tsx",
-                lineNumber: 86,
+                lineNumber: 92,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/EditorPanel.tsx",
-        lineNumber: 29,
+        lineNumber: 32,
         columnNumber: 5
     }, this);
 }
@@ -866,9 +869,10 @@ const getNodeLabel = (node)=>{
     const base = node.type.charAt(0).toUpperCase() + node.type.slice(1);
     return `${base} • ${node.id}`;
 };
-function FlowInsightsPanel({ data, selectedNode }) {
+function FlowInsightsPanel({ data, selectedNode, theme = 'dark' }) {
     _s();
     const selectedNodeData = data.nodes.find((node)=>node.id === selectedNode);
+    const isDark = theme === 'dark';
     const insights = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "FlowInsightsPanel.useMemo[insights]": ()=>{
             if (!selectedNodeData) {
@@ -979,31 +983,31 @@ function FlowInsightsPanel({ data, selectedNode }) {
         selectedNodeData
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "mx-4 mb-4 rounded-[24px] border border-[#ffe3cc]/15 bg-[#23160d]/90 backdrop-blur-xl flex flex-col shadow-[12px_12px_24px_rgba(0,0,0,0.35)]",
+        className: `mx-4 mb-4 rounded-[24px] border backdrop-blur-xl flex flex-col shadow-[12px_12px_24px_rgba(0,0,0,0.18)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#23160d]/90' : 'border-[#fb7507]/15 bg-[#fffaf4]/95'}`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "border-b border-[#ffe3cc]/15 px-4 py-3",
+                className: `border-b px-4 py-3 ${isDark ? 'border-[#ffe3cc]/15' : 'border-[#fb7507]/15'}`,
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                        className: "text-sm font-semibold uppercase tracking-[0.3em] text-[#e7a46e]",
+                        className: `text-sm font-semibold uppercase tracking-[0.3em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                         children: "Node Insights"
                     }, void 0, false, {
                         fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                        lineNumber: 122,
+                        lineNumber: 124,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-xs text-[#ffe3cc]/70",
+                        className: `text-xs ${isDark ? 'text-[#ffe3cc]/70' : 'text-[#7a4518]/70'}`,
                         children: "Focused view for the currently selected node"
                     }, void 0, false, {
                         fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                        lineNumber: 123,
+                        lineNumber: 125,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                lineNumber: 121,
+                lineNumber: 123,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1013,38 +1017,38 @@ function FlowInsightsPanel({ data, selectedNode }) {
                     children: "Select a node on the canvas to inspect its path impact and flow behavior."
                 }, void 0, false, {
                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                    lineNumber: 128,
+                    lineNumber: 130,
                     columnNumber: 11
                 }, this) : !insights ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "neo-card p-4 text-sm text-[#ffe3cc]/70",
                     children: "No node insights available for the current selection."
                 }, void 0, false, {
                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                    lineNumber: 132,
+                    lineNumber: 134,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "rounded-[20px] border border-[#ffe3cc]/15 bg-gradient-to-br from-[#ffe3cc]/15 via-[#e7a46e]/10 to-[#fb7507]/15 p-4 shadow-[inset_2px_2px_8px_rgba(0,0,0,0.2)]",
+                            className: `rounded-[20px] border p-4 shadow-[inset_2px_2px_8px_rgba(0,0,0,0.1)] ${isDark ? 'border-[#ffe3cc]/15 bg-linear-to-br from-[#ffe3cc]/15 via-[#e7a46e]/10 to-[#fb7507]/15' : 'border-[#fb7507]/15 bg-linear-to-br from-[#fff7ef] via-[#ffe8d2] to-[#ffd2aa]'}`,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-xs uppercase tracking-[0.3em] text-[#e7a46e]",
+                                    className: `text-xs uppercase tracking-[0.3em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                                     children: "Selected Node"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 138,
+                                    lineNumber: 140,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "mt-2 text-xl font-semibold text-[#fff7ef]",
+                                    className: `mt-2 text-xl font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                     children: insights.nodeLabel
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 139,
+                                    lineNumber: 141,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "mt-1 text-sm text-[#ffe3cc]",
+                                    className: `mt-1 text-sm ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`,
                                     children: [
                                         insights.nodeType,
                                         " node • ",
@@ -1052,189 +1056,189 @@ function FlowInsightsPanel({ data, selectedNode }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 140,
+                                    lineNumber: 142,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                            lineNumber: 137,
+                            lineNumber: 139,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "grid grid-cols-2 gap-3",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "neo-card p-3",
+                                    className: `neo-card p-3 ${isDark ? '' : 'bg-[#fff7ef]'}`,
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-xs uppercase tracking-[0.25em] text-[#e7a46e]",
+                                            className: `text-xs uppercase tracking-[0.25em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                                             children: "Reach"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                            lineNumber: 145,
+                                            lineNumber: 147,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "mt-2 text-2xl font-semibold text-[#fff7ef]",
+                                            className: `mt-2 text-2xl font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                             children: [
                                                 insights.reach,
                                                 "%"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                            lineNumber: 146,
+                                            lineNumber: 148,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 144,
+                                    lineNumber: 146,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "neo-card p-3",
+                                    className: `neo-card p-3 ${isDark ? '' : 'bg-[#fff7ef]'}`,
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-xs uppercase tracking-[0.25em] text-[#e7a46e]",
+                                            className: `text-xs uppercase tracking-[0.25em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                                             children: "Depth"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                            lineNumber: 149,
+                                            lineNumber: 151,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "mt-2 text-2xl font-semibold text-[#fff7ef]",
+                                            className: `mt-2 text-2xl font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                             children: insights.depth
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                            lineNumber: 150,
+                                            lineNumber: 152,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 150,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                            lineNumber: 143,
+                            lineNumber: 145,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "neo-card p-4",
+                            className: `neo-card p-4 ${isDark ? '' : 'bg-[#fff7ef]'}`,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-sm font-semibold text-[#fff7ef]",
+                                    className: `text-sm font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                     children: "Branch Summary"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 155,
+                                    lineNumber: 157,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "mt-3 space-y-2 text-sm text-[#ffe3cc]",
+                                    className: `mt-3 space-y-2 text-sm ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`,
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "rounded-2xl border border-[#ffe3cc]/15 bg-[#2d1d10]/70 p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.23)]",
+                                            className: `rounded-2xl border p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.1)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/70' : 'border-[#fb7507]/15 bg-[#fff2e8]'}`,
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xs uppercase tracking-[0.25em] text-[#e7a46e]",
+                                                    className: `text-xs uppercase tracking-[0.25em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                                                     children: "Outgoing branches"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 158,
+                                                    lineNumber: 160,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "mt-1 text-lg font-semibold text-[#fff7ef]",
+                                                    className: `mt-1 text-lg font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                                     children: insights.branchCount
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 159,
+                                                    lineNumber: 161,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                            lineNumber: 157,
+                                            lineNumber: 159,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "rounded-2xl border border-[#ffe3cc]/15 bg-[#2d1d10]/70 p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.23)]",
+                                            className: `rounded-2xl border p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.1)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/70' : 'border-[#fb7507]/15 bg-[#fff2e8]'}`,
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xs uppercase tracking-[0.25em] text-[#e7a46e]",
+                                                    className: `text-xs uppercase tracking-[0.25em] ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                                                     children: "Next step(s)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 162,
+                                                    lineNumber: 164,
                                                     columnNumber: 19
                                                 }, this),
                                                 insights.nextNodes.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                                    className: "mt-2 list-disc space-y-1 pl-5 text-[#ffe3cc]",
+                                                    className: `mt-2 list-disc space-y-1 pl-5 ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`,
                                                     children: insights.nextNodes.map((nextNode)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: nextNode
                                                         }, nextNode, false, {
                                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                            lineNumber: 165,
+                                                            lineNumber: 167,
                                                             columnNumber: 61
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 166,
                                                     columnNumber: 21
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "mt-2 text-[#ffe3cc]/70",
+                                                    className: `mt-2 ${isDark ? 'text-[#ffe3cc]/70' : 'text-[#7a4518]/70'}`,
                                                     children: "No outgoing branches."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 168,
+                                                    lineNumber: 170,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                            lineNumber: 161,
+                                            lineNumber: 163,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 156,
+                                    lineNumber: 158,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                            lineNumber: 154,
+                            lineNumber: 156,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "neo-card p-4",
+                            className: `neo-card p-4 ${isDark ? '' : 'bg-[#fff7ef]'}`,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                    className: "text-sm font-semibold text-[#fff7ef]",
+                                    className: `text-sm font-semibold ${isDark ? 'text-[#fff7ef]' : 'text-[#23160d]'}`,
                                     children: "Flow Health"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 175,
+                                    lineNumber: 177,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "mt-3 space-y-3 text-sm text-[#ffe3cc]",
+                                    className: `mt-3 space-y-3 text-sm ${isDark ? 'text-[#ffe3cc]' : 'text-[#5b2b0c]'}`,
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: `rounded-2xl border p-3 ${insights.isDeadEnd ? 'border-red-400/20 bg-red-500/10' : 'border-[#e7a46e]/25 bg-[#e7a46e]/10'}`,
+                                            className: `rounded-2xl border p-3 ${insights.isDeadEnd ? 'border-red-400/20 bg-red-500/10' : isDark ? 'border-[#e7a46e]/25 bg-[#e7a46e]/10' : 'border-[#fb7507]/20 bg-[#ffe8d2]'}`,
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: `font-semibold ${insights.isDeadEnd ? 'text-red-300' : 'text-[#ffe3cc]'}`,
+                                                    className: `font-semibold ${insights.isDeadEnd ? 'text-red-300' : isDark ? 'text-[#ffe3cc]' : 'text-[#c85a08]'}`,
                                                     children: insights.isDeadEnd ? 'Dead end warning' : 'Healthy continuation'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 178,
+                                                    lineNumber: 180,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1242,24 +1246,24 @@ function FlowInsightsPanel({ data, selectedNode }) {
                                                     children: insights.isDeadEnd ? 'This node has no forward path.' : 'This node continues the conversation smoothly.'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 181,
+                                                    lineNumber: 183,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                            lineNumber: 177,
+                                            lineNumber: 179,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "rounded-2xl border border-[#ffe3cc]/15 bg-[#2d1d10]/70 p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.23)]",
+                                            className: `rounded-2xl border p-3 shadow-[inset_2px_2px_6px_rgba(0,0,0,0.1)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/70' : 'border-[#fb7507]/15 bg-[#fff2e8]'}`,
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "font-semibold text-[#e7a46e]",
+                                                    className: `font-semibold ${isDark ? 'text-[#e7a46e]' : 'text-[#c85a08]'}`,
                                                     children: "Suggested move"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 185,
+                                                    lineNumber: 187,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1267,38 +1271,38 @@ function FlowInsightsPanel({ data, selectedNode }) {
                                                     children: insights.suggestion
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 188,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                            lineNumber: 184,
+                                            lineNumber: 186,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                                    lineNumber: 176,
+                                    lineNumber: 178,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                            lineNumber: 174,
+                            lineNumber: 176,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-                lineNumber: 126,
+                lineNumber: 128,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/FlowInsightsPanel.tsx",
-        lineNumber: 120,
+        lineNumber: 122,
         columnNumber: 5
     }, this);
 }
@@ -1337,6 +1341,8 @@ function Page() {
     const [showPreview, setShowPreview] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [selectedNode, setSelectedNode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])();
     const [nodeCount, setNodeCount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [theme, setTheme] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('dark');
+    const isDark = theme === 'dark';
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Page.useEffect": ()=>{
             const loadData = {
@@ -1379,26 +1385,26 @@ function Page() {
     };
     if (!data) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "min-h-screen bg-[#17110b] flex items-center justify-center",
+            className: `min-h-screen flex items-center justify-center ${isDark ? 'bg-[#17110b]' : 'bg-[#fff7ef]'}`,
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-[#e7a46e]",
+                className: isDark ? 'text-[#e7a46e]' : 'text-[#fb7507]',
                 children: "Loading..."
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 52,
+                lineNumber: 54,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/page.tsx",
-            lineNumber: 51,
+            lineNumber: 53,
             columnNumber: 7
         }, this);
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-        className: "min-h-screen bg-[radial-gradient(circle_at_top,_rgba(255,227,204,0.12),_transparent_35%),linear-gradient(135deg,_#17110b_0%,_#23160d_100%)] text-[#fff7ef] flex flex-col",
+        className: `min-h-screen flex flex-col ${isDark ? 'bg-[radial-gradient(circle_at_top,_rgba(255,227,204,0.12),_transparent_35%),linear-gradient(135deg,_#17110b_0%,_#23160d_100%)] text-[#fff7ef]' : 'bg-[radial-gradient(circle_at_top,_rgba(251,117,7,0.12),_transparent_35%),linear-gradient(135deg,_#fffaf4_0%,_#ffebd9_100%)] text-[#23160d]'}`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-                className: "h-16 border-b border-[#ffe3cc]/15 bg-[#23160d]/95 backdrop-blur-sm flex items-center justify-between px-8 shadow-[0_12px_30px_rgba(0,0,0,0.35)]",
+                className: `h-16 border-b flex items-center justify-between px-8 shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm ${isDark ? 'border-[#ffe3cc]/15 bg-[#23160d]/95' : 'border-[#fb7507]/15 bg-[#fffdf8]/95'}`,
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex items-center gap-3",
@@ -1410,43 +1416,77 @@ function Page() {
                                     children: "SF"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
-                                    lineNumber: 62,
+                                    lineNumber: 64,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 61,
+                                lineNumber: 63,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                className: "text-xl font-semibold bg-linear-to-r from-[#ffe3cc] via-[#e7a46e] to-[#fb7507] bg-clip-text text-transparent",
+                                className: `text-xl font-semibold bg-linear-to-r from-[#ffe3cc] via-[#e7a46e] to-[#fb7507] bg-clip-text text-transparent ${isDark ? '' : 'text-[#fb7507]'}`,
                                 children: "SupportFlow"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 64,
+                                lineNumber: 66,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 60,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "rounded-full border border-[#ffe3cc]/15 bg-[#2d1d10]/80 px-3 py-1 text-sm font-medium text-[#e7a46e] shadow-[inset_2px_2px_6px_rgba(0,0,0,0.28)]",
+                        className: "flex items-center gap-3",
                         children: [
-                            nodeCount,
-                            " nodes"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: `rounded-full border px-3 py-1 text-sm font-medium shadow-[inset_2px_2px_6px_rgba(0,0,0,0.08)] ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/80 text-[#e7a46e]' : 'border-[#fb7507]/15 bg-[#fff2e8]/80 text-[#c85a08]'}`,
+                                children: [
+                                    nodeCount,
+                                    " nodes"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/app/page.tsx",
+                                lineNumber: 69,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                type: "button",
+                                onClick: ()=>setTheme(isDark ? 'light' : 'dark'),
+                                className: `flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-semibold transition-colors ${isDark ? 'border-[#ffe3cc]/15 bg-[#2d1d10]/80 text-[#ffe3cc] hover:bg-[#3a2414]' : 'border-[#fb7507]/20 bg-[#fff7ef] text-[#c85a08] hover:bg-[#ffe8d2]'}`,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: isDark ? '☀' : '☾'
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/page.tsx",
+                                        lineNumber: 77,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: isDark ? 'Light' : 'Dark'
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/page.tsx",
+                                        lineNumber: 78,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/app/page.tsx",
+                                lineNumber: 72,
+                                columnNumber: 11
+                            }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 66,
+                        lineNumber: 68,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 59,
+                lineNumber: 61,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1455,35 +1495,19 @@ function Page() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex-1 flex flex-col overflow-hidden",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex-1 p-6 mb-12 overflow-auto bg-[radial-gradient(circle_at_top_left,_rgba(255,227,204,0.12),_transparent_40%),linear-gradient(135deg,_rgba(23,17,11,0.98),rgba(35,22,13,0.9))]",
+                            className: `flex-1 p-6 mb-12 overflow-auto ${isDark ? 'bg-[radial-gradient(circle_at_top_left,_rgba(255,227,204,0.12),_transparent_40%),linear-gradient(135deg,_rgba(23,17,11,0.98),rgba(35,22,13,0.9))]' : 'bg-[radial-gradient(circle_at_top_left,_rgba(251,117,7,0.12),_transparent_40%),linear-gradient(135deg,_rgba(255,250,244,0.98),rgba(255,235,217,0.95))]'}`,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Canvas$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                 data: data,
                                 isEditing: true,
                                 activeNode: selectedNode,
                                 onNodeEdit: handleNodeEdit,
-                                onNodeSelect: setSelectedNode
+                                onNodeSelect: setSelectedNode,
+                                theme: theme
                             }, void 0, false, {
                                 fileName: "[project]/src/app/page.tsx",
-                                lineNumber: 74,
+                                lineNumber: 86,
                                 columnNumber: 13
                             }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/page.tsx",
-                            lineNumber: 73,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/page.tsx",
-                        lineNumber: 72,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "w-96 h-max border-l border-[#ffe3cc]/15 overflow-hidden flex flex-col",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$EditorPanel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            data: data,
-                            selectedNode: selectedNode,
-                            onNodeUpdate: handleNodeUpdate,
-                            onPreview: ()=>setShowPreview(true)
                         }, void 0, false, {
                             fileName: "[project]/src/app/page.tsx",
                             lineNumber: 85,
@@ -1493,37 +1517,57 @@ function Page() {
                         fileName: "[project]/src/app/page.tsx",
                         lineNumber: 84,
                         columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `w-96 h-max border-l overflow-hidden flex flex-col ${isDark ? 'border-[#ffe3cc]/15' : 'border-[#fb7507]/15'}`,
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$EditorPanel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                            data: data,
+                            selectedNode: selectedNode,
+                            onNodeUpdate: handleNodeUpdate,
+                            onPreview: ()=>setShowPreview(true),
+                            theme: theme
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 98,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/page.tsx",
+                        lineNumber: 97,
+                        columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 71,
+                lineNumber: 83,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$FlowInsightsPanel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 data: data,
-                selectedNode: selectedNode
+                selectedNode: selectedNode,
+                theme: theme
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 94,
+                lineNumber: 108,
                 columnNumber: 7
             }, this),
             showPreview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ChatPreview$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 data: data,
-                onClose: ()=>setShowPreview(false)
+                onClose: ()=>setShowPreview(false),
+                theme: theme
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
-                lineNumber: 96,
+                lineNumber: 110,
                 columnNumber: 23
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/page.tsx",
-        lineNumber: 58,
+        lineNumber: 60,
         columnNumber: 5
     }, this);
 }
-_s(Page, "m1Xqcy0Y4YTiOF774VqrpAEZTZw=");
+_s(Page, "t1W1qOv3FuXjp+Xh4r5vox6+Mtk=");
 _c = Page;
 var _c;
 __turbopack_context__.k.register(_c, "Page");
