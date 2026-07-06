@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Canvas from '@/src/components/Canvas';
+import ChatPreview from '@/src/components/ChatPreview';
 import EditorPanel from '@/src/components/EditorPanel';
 import { FlowData } from '@/types';
 
@@ -142,6 +143,8 @@ export default function Page() {
         </div>
       </div>
 
-     </main>
+      {/* Chat Preview Modal */}
+      {showPreview && <ChatPreview data={data} onClose={() => setShowPreview(false)} />}
+    </main>
   );
 }
