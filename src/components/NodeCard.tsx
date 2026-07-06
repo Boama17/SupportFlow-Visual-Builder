@@ -59,7 +59,7 @@ const getNodeIcon = (type: NodeType) => {
 };
 
 const getNodeSize = (type: NodeType) => {
-  return type === 'response' ? { w: 160, h: 90 } : { w: 220, h: 85 };
+  return type === 'response' ? { w: 150, h: 100 } : { w: 250, h: 120 };
 };
 
 export default function NodeCard({
@@ -80,7 +80,7 @@ export default function NodeCard({
   return (
     <div
       onClick={() => onSelectForPreview?.(node.id)}
-      className="absolute cursor-pointer transition-transform hover:scale-105"
+      className="absolute cursor-pointer ms-[12rem] mt-[2rem] transition-transform hover:scale-105"
       style={{
         left: `${node.x}px`,
         top: `${node.y}px`,
@@ -90,7 +90,7 @@ export default function NodeCard({
       }}
     >
       <div
-        className="relative w-full h-full rounded-xl shadow-lg flex flex-col items-center justify-center p-3 text-white font-medium transition-all duration-200 border-2"
+        className="relative w-full h-full rounded-xl shadow-lg flex flex-col items-center justify-center p-2 text-white font-medium transition-all duration-200 border-2"
         style={{
           backgroundColor: color,
           borderColor: isActive ? '#ffffff' : color,
@@ -99,7 +99,7 @@ export default function NodeCard({
             ? `0 0 24px ${color}90, 0 10px 28px rgba(0, 0, 0, 0.7)` 
             : `0 8px 20px ${color}40, 0 3px 8px rgba(0, 0, 0, 0.25)`,
           opacity: 0.98,
-          borderRadius: '14px',
+          borderRadius: '16px',
         }}
       >
         <div className="text-sm mb-2 flex items-center gap-1">

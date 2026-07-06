@@ -80,7 +80,7 @@ export default function Connectors({ nodes, activeConnector }: ConnectorsProps) 
 
   return (
     <svg
-      className="absolute top-0 left-0 w-full h-full pointer-events-none"
+      className="absolute top-0 left-0 w-full h-full ms-[12rem] mt-[2rem] pointer-events-none"
       style={{ zIndex: 0 }}
     >
       {lines}

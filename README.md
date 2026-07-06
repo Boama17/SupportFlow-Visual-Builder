@@ -164,7 +164,7 @@ The application is built with Next.js 16 and deploys to any Node.js hosting (Ver
 
 ## Compliance & Testing
 
-✅ All required features implemented:
+All required features implemented:
 - Visual graph rendering with custom DOM/SVG
 - Real-time node editing
 - Chat preview with graph traversal
