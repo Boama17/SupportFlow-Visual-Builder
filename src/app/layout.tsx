@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="en" className="dark" style={{ backgroundColor: '#0f172a' }}>
       <body className={`${inter.className} antialiased bg-slate-900`}>
         {children}
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
