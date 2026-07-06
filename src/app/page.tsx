@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Canvas from '@/src/components/Canvas';
+import EditorPanel from '@/src/components/EditorPanel';
 import { FlowData } from '@/types';
 
 export default function Page() {
@@ -129,9 +130,18 @@ export default function Page() {
           />
         </div>
 
-    
+        {/* Sidebar */}
+        <div className="w-96 border-l border-slate-700/50 overflow-hidden flex flex-col">
+          <EditorPanel
+            data={data}
+            selectedNode={selectedNode}
+            tips={tips}
+            onNodeUpdate={handleNodeUpdate}
+            onPreview={() => setShowPreview(true)}
+          />
+        </div>
       </div>
 
-    </main>
+     </main>
   );
 }
